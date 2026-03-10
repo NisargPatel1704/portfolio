@@ -1,9 +1,14 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, send_from_directory
 import urllib.request
 import xml.etree.ElementTree as ET
 import re
+import os
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
+
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory(os.path.join(app.root_path, 'static'), filename)
 
 MEDIUM_RSS = "https://medium.com/feed/@nisargpatel24880"
 

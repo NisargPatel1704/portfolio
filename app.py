@@ -4,11 +4,7 @@ import xml.etree.ElementTree as ET
 import re
 import os
 
-app = Flask(__name__, static_folder='static', static_url_path='/static')
-
-@app.route('/static/<path:filename>')
-def static_files(filename):
-    return send_from_directory(os.path.join(app.root_path, 'static'), filename)
+app = Flask(__name__)
 
 MEDIUM_RSS = "https://medium.com/feed/@nisargpatel24880"
 

@@ -50,7 +50,12 @@
     <p class="hero-tagline">Python &amp; Django developer &nbsp;&bull;&nbsp; Cybersecurity enthusiast &nbsp;&bull;&nbsp; Building, learning &amp; sharing</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="https://github.com/NisargPatel1704" target="_blank" class="btn-ghost">GitHub ↗</a>
+      <a href="https://github.com/NisargPatel1704" target="_blank" class="btn-ghost">
+        GitHub ↗
+      </a>
+        <a href="#" class="btn-ghost" onclick="openResume()">
+        Resume ↗
+      </a>
     </div>
   </div>
   <div class="hero-visual">
@@ -241,6 +246,30 @@
     </div>
   </div>
 </footer>
+
+<!-- Resume Viewer Modal -->
+<div id="resumeModal" class="resume-modal">
+  <div class="resume-content">
+
+    <span class="resume-close" onclick="closeResume()">×</span>
+
+    <div style="text-align:right; padding:10px 14px;">
+      <a 
+        href="{{ url_for('static', filename='files/nisarg-patel-resume.pdf') }}" 
+        download 
+        class="btn-ghost">
+        Download Resume ↓
+      </a>
+    </div>
+
+    <iframe 
+      src="{{ url_for('static', filename='files/nisarg-patel-resume.pdf') }}"
+      width="100%"
+      height="600px">
+    </iframe>
+
+  </div>
+</div>
 
 <!-- Load JavaScript -->
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>

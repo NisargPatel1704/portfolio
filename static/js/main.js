@@ -103,3 +103,29 @@ document.getElementById('contact-form')?.addEventListener('submit', function(e) 
     this.reset();
   }, 3000);
 });
+
+// ===== RESUME MODAL =====
+function openResume() {
+  const modal = document.getElementById('resumeModal');
+  if (modal) modal.style.display = 'flex';
+}
+
+function closeResume() {
+  const modal = document.getElementById('resumeModal');
+  if (modal) modal.style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', function(e) {
+  const modal = document.getElementById('resumeModal');
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === "Escape") {
+    const modal = document.getElementById('resumeModal');
+    if (modal) modal.style.display = 'none';
+  }
+});

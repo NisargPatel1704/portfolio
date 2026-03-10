@@ -3,7 +3,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import re
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 
 MEDIUM_RSS = "https://medium.com/feed/@nisargpatel24880"
 

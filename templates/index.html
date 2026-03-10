@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nisarg Patel — Security Researcher & Python Developer</title>
+  <meta name="description" content="Python & Django Developer, Cybersecurity Enthusiast, building security tools and open source projects."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="noise"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">NP<span class="cursor-blink">_</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#blog">Writing</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-terminal">
+      <div class="terminal-bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="terminal-title">nisarg@portfolio:~$</span>
+      </div>
+      <div class="terminal-body">
+        <p class="terminal-line"><span class="prompt">$</span> <span class="cmd" id="typed-cmd"></span></p>
+        <div class="terminal-output" id="terminal-output" style="display:none">
+          <p><span class="key">name</span>: <span class="val">Nisarg Patel</span></p>
+          <p><span class="key">role</span>: <span class="val">Python &amp; Django Developer</span></p>
+          <p><span class="key">domain</span>: <span class="val">Cybersecurity | AI | Web Dev</span></p>
+          <p><span class="key">status</span>: <span class="val green-txt">actively_building()</span></p>
+          <p><span class="key">location</span>: <span class="val">India</span></p>
+        </div>
+      </div>
+    </div>
+    <h1 class="hero-name">Nisarg<br><span class="accent">Patel</span></h1>
+    <p class="hero-tagline">Python &amp; Django developer &nbsp;&bull;&nbsp; Cybersecurity enthusiast &nbsp;&bull;&nbsp; Building, learning &amp; sharing</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="https://github.com/NisargPatel1704" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hex-grid">
+      <div class="hex"><span>🔐</span></div>
+      <div class="hex"><span>🐍</span></div>
+      <div class="hex"><span>🧠</span></div>
+      <div class="hex"><span>🛡️</span></div>
+      <div class="hex"><span>⚙️</span></div>
+      <div class="hex"><span>🐳</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section about-section">
+  <div class="container">
+    <div class="section-label">// about.me</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Who Am I?</h2>
+        <p>I'm a <strong>Python &amp; Django developer</strong> with a deep interest in <strong>cybersecurity</strong>. I build practical security tools, explore vulnerabilities, and write about what I learn on Medium.</p>
+        <p>My work sits at the intersection of <span class="highlight">web development</span>, <span class="highlight">security engineering</span>, and <span class="highlight">AI/ML applications</span>. I believe in learning by building — every project teaches something the docs never mention.</p>
+        <p>Currently exploring: penetration testing methodologies, RAG-based AI systems, and open source contributions.</p>
+        <div class="about-stats">
+          <div class="stat"><span class="stat-num">2+</span><span class="stat-label">Years Coding</span></div>
+          <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Security Tools</span></div>
+          <div class="stat"><span class="stat-num">CTF</span><span class="stat-label">PicoCTF Player</span></div>
+          <div class="stat"><span class="stat-num">OSS</span><span class="stat-label">Open Source</span></div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="card-inner">
+          <div class="profile-avatar">NP</div>
+          <div class="profile-info">
+            <h3>Nisarg Patel</h3>
+            <p class="profile-role">Python Developer &amp; Security Researcher</p>
+          </div>
+          <div class="profile-links">
+            <a href="https://github.com/NisargPatel1704" target="_blank" class="plink">GitHub ↗</a>
+            <a href="https://medium.com/@nisargpatel24880" target="_blank" class="plink">Medium ↗</a>
+            <a href="mailto:nisargp24880@gmail.com" class="plink">Email ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section projects-section">
+  <div class="container">
+    <div class="section-label">// projects.load()</div>
+    <h2 class="section-title">Featured Work</h2>
+    <div class="projects-grid">
+      {% for project in projects %}
+      <div class="project-card" data-category="{{ project.category }}">
+        <div class="project-header">
+          <div class="project-category-badge cat-{{ project.category }}">{{ project.category }}</div>
+          <a href="{{ project.github }}" target="_blank" class="icon-link" title="View on GitHub">⌥ GitHub</a>
+        </div>
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-subtitle">{{ project.subtitle }}</p>
+        <p class="project-desc">{{ project.description }}</p>
+        <ul class="project-highlights">
+          {% for hl in project.highlights %}
+          <li>{{ hl }}</li>
+          {% endfor %}
+        </ul>
+        <div class="project-tags">
+          {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="projects-footer">
+      <a href="https://github.com/NisargPatel1704" target="_blank" class="btn-ghost">View All on GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section skills-section">
+  <div class="container">
+    <div class="section-label">// skills.scan()</div>
+    <h2 class="section-title">Technical Arsenal</h2>
+    <div class="skills-grid">
+      {% for category, items in skills.items() %}
+      <div class="skill-group">
+        <h3 class="skill-category">{{ category }}</h3>
+        {% for skill in items %}
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-pct">{{ skill.level }}%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" data-level="{{ skill.level }}"></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="section blog-section">
+  <div class="container">
+    <div class="section-label">// medium.fetch()</div>
+    <h2 class="section-title">Latest Writing</h2>
+    <div id="blog-grid" class="blog-grid">
+      <div class="blog-loading">
+        <span class="loading-dots">Fetching articles<span>.</span><span>.</span><span>.</span></span>
+      </div>
+    </div>
+    <div class="blog-footer">
+      <a href="https://medium.com/@nisargpatel24880" target="_blank" class="btn-ghost">Read All on Medium ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="section-label">// contact.init()</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p>Whether you're interested in collaborating on a <span class="highlight">security project</span>, discussing <span class="highlight">open source</span>, or just want to connect — my inbox is open.</p>
+        <div class="contact-methods">
+          <a href="mailto:nisargp24880@gmail.com" class="contact-card">
+            <div class="cc-icon">📧</div>
+            <div class="cc-info"><span class="cc-label">Email</span><span class="cc-val">nisargp24880@gmail.com</span></div>
+          </a>
+          <a href="https://github.com/NisargPatel1704" target="_blank" class="contact-card">
+            <div class="cc-icon">💻</div>
+            <div class="cc-info"><span class="cc-label">GitHub</span><span class="cc-val">NisargPatel1704</span></div>
+          </a>
+          <a href="https://medium.com/@nisargpatel24880" target="_blank" class="contact-card">
+            <div class="cc-icon">✍️</div>
+            <div class="cc-info"><span class="cc-label">Medium</span><span class="cc-val">@nisargpatel24880</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">send_message.py</span>
+        </div>
+        <div class="contact-form-wrap">
+          <form id="contact-form">
+            <div class="form-group">
+              <label>your_name <span class="req">*</span></label>
+              <input type="text" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label>your_email <span class="req">*</span></label>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label>message <span class="req">*</span></label>
+              <textarea name="message" rows="4" placeholder="Hey Nisarg, I'd like to..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">send_message() ↵</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">NP<span class="accent">_</span></div>
+    <p class="footer-copy">Built with Python &amp; Flask by Nisarg Patel &copy; 2025</p>
+    <div class="footer-links">
+      <a href="https://github.com/NisargPatel1704" target="_blank">GitHub</a>
+      <a href="https://medium.com/@nisargpatel24880" target="_blank">Medium</a>
+      <a href="mailto:nisargp24880@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
